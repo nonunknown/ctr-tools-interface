@@ -6,6 +6,7 @@ Provides a Interface for CTR-tools framework
 
 * Godot: 3.2.2 beta 2 mono
 * External Editor: MonoDevelop
+* CTR-Framework Version: R10
 
 ## How to Use
 This is a WIP project, not all features are working....
