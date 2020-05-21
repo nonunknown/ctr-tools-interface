@@ -15,10 +15,15 @@ Only working feature is model reader
 
 How to use:
 1 - Open it
+
 2 - Select Model Reader
+
 3 - Select .lev file
+
 4 - wait for it
+
 5 - look at the where .lev file is located
+
 
 if some error occurs open the program using the Command line tool, this way it will provide feedback for you, when it stops at some point press RETURN key, then the process should continue, repeat step 5
 
@@ -38,5 +43,6 @@ Yep Nice and smoothly, just make sure you have all https://www.mono-project.com/
 ## Thanks to
 
 @DcxDemo - The great developer of this awesome framework
+
 @Niko - A lot of patience and help with my doubts
 
