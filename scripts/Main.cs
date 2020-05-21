@@ -74,9 +74,9 @@ public class Main : Control
 	}
 
 
-	private void OnModelsPressed()
+	private void OnBtModelsPressed()
 	{
-		// Replace with function body.
+		anim.ChangeState((int)MenuAnim.STATE.MODEL);
 	}
 
 
@@ -110,5 +110,3 @@ public class Main : Control
 
 
 }
-
-

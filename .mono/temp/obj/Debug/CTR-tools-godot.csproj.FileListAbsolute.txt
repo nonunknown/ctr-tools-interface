@@ -101,3 +101,16 @@
 /home/nonunknown/Desktop/CTR-tools-godot/.mono/temp/bin/Debug/System.Xml.XPath.dll
 /home/nonunknown/Desktop/CTR-tools-godot/.mono/temp/bin/Debug/System.Xml.XPath.XDocument.dll
 /home/nonunknown/Desktop/CTR-tools-godot/.mono/temp/obj/Debug/CTR-tools-godot.csproj.CopyComplete
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/obj/Debug/CTR-tools-godot.csprojAssemblyReference.cache
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/obj/Debug/CTR-tools-godot.csproj.CoreCompileInputs.cache
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/obj/Debug/CTR-tools-godot.dll
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/obj/Debug/CTR-tools-godot.pdb
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/bin/Debug/CTR-tools-godot.dll
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/bin/Debug/CTR-tools-godot.pdb
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/bin/Debug/CTRFramework.dll
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/bin/Debug/NAudio.dll
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/bin/Debug/Newtonsoft.Json.dll
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/obj/Debug/CTR-tools-godot.csproj.CopyComplete
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/bin/Debug/CTRFramework.pdb
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/bin/Debug/NAudio.xml
+/home/nonunknown/Desktop/projects/ctr-tools-interface/.mono/temp/bin/Debug/Newtonsoft.Json.xml

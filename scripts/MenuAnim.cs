@@ -4,13 +4,14 @@ using System.Collections.Generic;
 
 public class MenuAnim : Node
 {
-	public enum STATE {MAIN,BIG}
+	public enum STATE {MAIN,BIG,MODEL}
 	List<Node> controls = new List<Node>();
 	Control state;
 	public override void _Ready()
 	{
 		controls.Add(GetNode<Control>("../Principal"));
 		controls.Add(GetNode<Control>("../Big"));
+        controls.Add(GetNode<Control>("../MReader"));
 
 		state = (Control)controls[0];
 	}

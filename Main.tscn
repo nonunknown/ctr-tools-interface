@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://imgs/flag.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Main.cs" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scripts/BIG.cs" type="Script" id=9]
 [ext_resource path="res://font/8-BIT WONDER.TTF" type="DynamicFontData" id=10]
 [ext_resource path="res://imgs/crash_eye_1.png" type="Texture" id=11]
+[ext_resource path="res://scripts/ModelReader.cs" type="Script" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 1
@@ -161,6 +162,17 @@ func _on_Big_visibility_changed():
 
 [sub_resource type="StyleBoxEmpty" id=21]
 
+[sub_resource type="GDScript" id=22]
+script/source = "extends Control
+
+
+
+
+func _on_MReader_visibility_changed():
+	$FileDialog.visible = visible
+	pass # Replace with function body.
+"
+
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -177,7 +189,7 @@ scale = Vector2( 1.71281, 1.39646 )
 skew = 4.37114e-08
 frames = SubResource( 15 )
 animation = "New Anim"
-frame = 13
+frame = 2
 playing = true
 offset = Vector2( -6, 0 )
 __meta__ = {
@@ -372,8 +384,8 @@ window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.big", "*.txt" )
-current_dir = "/home/nonunknown/Desktop/CTR-tools-godot"
-current_path = "/home/nonunknown/Desktop/CTR-tools-godot/"
+current_dir = "/home/nonunknown/Desktop/projects/ctr-tools-interface"
+current_path = "/home/nonunknown/Desktop/projects/ctr-tools-interface/"
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -398,17 +410,66 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MPK" type="Control" parent="."]
+[node name="MReader" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = SubResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="MReader"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -313.0
+margin_top = -189.0
+margin_right = 319.0
+margin_bottom = 218.0
+theme = ExtResource( 5 )
+popup_exclusive = true
+window_title = "Open a File"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.lev", "*.ctr" )
+current_dir = "/home/nonunknown/Desktop/projects/ctr-tools-interface"
+current_path = "/home/nonunknown/Desktop/projects/ctr-tools-interface/"
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Output" type="TextEdit" parent="MReader"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 43.0
+margin_top = 50.0
+margin_right = -31.0
+margin_bottom = -25.0
+custom_styles/read_only = SubResource( 21 )
+text = "All Outputs will be shown here.
+
+
+"
+readonly = true
+highlight_current_line = true
+syntax_highlighting = true
+highlight_all_occurrences = true
+smooth_scrolling = true
+minimap_draw = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="MenuAnim/btBack" to="." method="OnBackPressed"]
 [connection signal="mouse_entered" from="Principal/Panel/VBoxContainer/bt_big" to="." method="OnBigMouseEnter" binds= [ "Extracts nor builds BIGFILE.BIG" ]]
 [connection signal="pressed" from="Principal/Panel/VBoxContainer/bt_big" to="." method="OnBigPressed"]
 [connection signal="mouse_entered" from="Principal/Panel/VBoxContainer/bt_mpk" to="." method="OnMpkMouseEntered" binds= [ "Planned to be an extractor for mpk files. As of now just prints the list of contained models." ]]
 [connection signal="pressed" from="Principal/Panel/VBoxContainer/bt_mpk" to="." method="OnMpkPressed"]
 [connection signal="mouse_entered" from="Principal/Panel/VBoxContainer/bt_models" to="." method="OnModelsMouseEnter" binds= [ "This tool takes a single CTR scene (*.lev file) or a folder as an input and exports textured and vertex colored mesh of the level for low and mid levels LODs in modified OBJ format (vcolor support by MeshLab). Hence MeshLab is recommended as an intermediate converter." ]]
-[connection signal="pressed" from="Principal/Panel/VBoxContainer/bt_models" to="." method="OnModelsPressed"]
+[connection signal="pressed" from="Principal/Panel/VBoxContainer/bt_models" to="." method="OnBtModelsPressed"]
 [connection signal="mouse_entered" from="Principal/Panel/VBoxContainer/bt_lng" to="." method="OnLngMouseEnter" binds= [ "Converts LNG files into text files and back. LNG files contain all the strings used in the game, thus allows to localize the game in any language based on latin alphabet." ]]
 [connection signal="pressed" from="Principal/Panel/VBoxContainer/bt_lng" to="." method="OnLngPressed"]
 [connection signal="mouse_entered" from="Principal/Panel/VBoxContainer/bt_howl" to="." method="OnHowlMouseEnter" binds= [ "Extracts CSEQ and BNK files from KART.HWL." ]]
@@ -417,10 +478,13 @@ anchor_bottom = 1.0
 [connection signal="pressed" from="Principal/Panel/VBoxContainer/bt_cseq" to="." method="OnCseqPressed"]
 [connection signal="mouse_entered" from="Principal/Panel/VBoxContainer/bt_viewer" to="." method="OnViewerMouseEnter" binds= [ "Loads and displays CTR scenes in 3D space. Put lev files in levels folder. All lev files are loaded at once, which may be used to load all 5 hub maps. Meant to be used with an XInput controller (XBOX360 Controller or similiar)." ]]
 [connection signal="pressed" from="Principal/Panel/VBoxContainer/bt_viewer" to="." method="OnViewerPressed"]
-[connection signal="visibility_changed" from="Big" to="Big/FileDialog" method="_on_Big_visibility_changed"]
 [connection signal="visibility_changed" from="Big" to="Big" method="_on_Big_visibility_changed"]
+[connection signal="visibility_changed" from="Big" to="Big/FileDialog" method="_on_Big_visibility_changed"]
 [connection signal="confirmed" from="Big/FileDialog" to="Big/FileDialog" method="_on_FileDialog_confirmed"]
 [connection signal="file_selected" from="Big/FileDialog" to="Big/FileDialog" method="_on_FileDialog_file_selected"]
+[connection signal="visibility_changed" from="MReader" to="MReader" method="_on_MReader_visibility_changed"]
+[connection signal="confirmed" from="MReader/FileDialog" to="MReader/FileDialog" method="_on_FileDialog_confirmed"]
+[connection signal="file_selected" from="MReader/FileDialog" to="MReader/FileDialog" method="OnFileSelected"]
 
 [editable path="Principal/Panel/VBoxContainer/bt_big"]
 
