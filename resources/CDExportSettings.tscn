@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/CD_ExportSettings.cs" type="Script" id=1]
+
+[node name="confirmExpSettings" type="ConfirmationDialog"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -420.0
+margin_bottom = -308.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 292.0
+margin_bottom = 136.0
+
+[node name="cbPNG" type="CheckButton" parent="VBoxContainer"]
+margin_right = 284.0
+margin_bottom = 40.0
+text = "Export PNG"
+
+[node name="cbBMP" type="CheckButton" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 284.0
+margin_bottom = 84.0
+text = "Export BMP"
+
+[node name="cbTIM" type="CheckButton" parent="VBoxContainer"]
+margin_top = 88.0
+margin_right = 284.0
+margin_bottom = 128.0
+text = "Export TIM"
+[connection signal="confirmed" from="." to="." method="_on_confirmExpSettings_confirmed"]
+[connection signal="toggled" from="VBoxContainer/cbPNG" to="." method="_on_cbPNG_toggled"]
+[connection signal="toggled" from="VBoxContainer/cbBMP" to="." method="_on_cbBMP_toggled"]
+[connection signal="toggled" from="VBoxContainer/cbTIM" to="." method="_on_cbTIM_toggled"]

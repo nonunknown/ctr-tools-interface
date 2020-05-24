@@ -19,7 +19,17 @@ public class Main : Control
 		snd_move = GetNode("Sound/move") as AudioStreamPlayer;
 		snd_change = GetNode("Sound/change") as AudioStreamPlayer;
 
-	}
+        if (OS.HasFeature("Windows"))
+        {
+            CTRFramework.Scene.ExportConfig.SetSystem(0);
+        }
+        else
+        {
+            CTRFramework.Scene.ExportConfig.SetSystem(1);
+        }
+
+
+    }
 
 	 void MouseEnter()
 	{

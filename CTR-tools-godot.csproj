@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scripts\BIG.cs" />
+    <Compile Include="scripts\CD_ExportSettings.cs" />
     <Compile Include="scripts\Main.cs" />
     <Compile Include="scripts\MenuAnim.cs" />
     <Compile Include="scripts\Paths.cs" />
