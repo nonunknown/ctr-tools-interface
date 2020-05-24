@@ -218,6 +218,7 @@ ecf/
 rcf/
 
 DLL/files/
+DLL/text/
 
 # Windows Store app package directories and files
 AppPackages/
