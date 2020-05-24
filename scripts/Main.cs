@@ -7,21 +7,35 @@ public class Main : Control
 	RichTextLabel description;
 	[Export]
 	NodePath npDescription;
+	AudioStreamPlayer snd_select, snd_back, snd_move, snd_change;
+
 	public override void _Ready()
 	{
 		anim = GetNode<MenuAnim>("MenuAnim");
 		description = GetNode<RichTextLabel>(npDescription);
 		Paths.Initialize(true);
+		snd_select = GetNode("Sound/select") as AudioStreamPlayer;
+		snd_back = GetNode("Sound/back") as AudioStreamPlayer;
+		snd_move = GetNode("Sound/move") as AudioStreamPlayer;
+		snd_change = GetNode("Sound/change") as AudioStreamPlayer;
+
+	}
+
+	 void MouseEnter()
+	{
+
 	}
 
 	private void OnBigMouseEnter(String desc)
 	{
 		description.Text = desc;
+		snd_move.Play();
 	}
 
 
 	private void OnMpkMouseEntered(String desc)
 	{
+		snd_move.Play();
 		description.Text = desc;
 		// Replace with function body.
 	}
@@ -29,6 +43,7 @@ public class Main : Control
 
 	private void OnModelsMouseEnter(String desc)
 	{
+		snd_move.Play();
 		description.Text = desc;
 		// Replace with function body.
 	}
@@ -36,6 +51,7 @@ public class Main : Control
 
 	private void OnLngMouseEnter(String desc)
 	{
+		snd_move.Play();
 		description.Text = desc;
 		// Replace with function body.
 	}
@@ -43,6 +59,7 @@ public class Main : Control
 
 	private void OnHowlMouseEnter(String desc)
 	{
+		snd_move.Play();
 		description.Text = desc;
 		// Replace with function body.
 	}
@@ -50,6 +67,7 @@ public class Main : Control
 
 	private void OnCseqMouseEnter(String desc)
 	{
+		snd_move.Play();
 		description.Text = desc;
 		// Replace with function body.
 	}
@@ -57,6 +75,7 @@ public class Main : Control
 
 	private void OnViewerMouseEnter(String desc)
 	{
+		snd_move.Play();
 		description.Text = desc;
 		// Replace with function body.
 	}
@@ -65,6 +84,8 @@ public class Main : Control
 	private void OnBigPressed()
 	{
 		anim.ChangeState((int)MenuAnim.STATE.BIG);
+		snd_select.Play();
+		snd_change.Play();
 	}
 
 
@@ -77,6 +98,8 @@ public class Main : Control
 	private void OnBtModelsPressed()
 	{
 		anim.ChangeState((int)MenuAnim.STATE.MODEL);
+		snd_select.Play();
+		snd_change.Play();
 	}
 
 
@@ -106,6 +129,7 @@ public class Main : Control
 	private void OnBackPressed()
 	{
 		anim.ChangeState(0);
+		snd_back.Play();
 	}
 
 

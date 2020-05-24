@@ -13,11 +13,13 @@ public class ModelReader : FileDialog
 
 	private void OnFileSelected(String path)
 	{
+		Hide();
 		string p = ProjectSettings.GlobalizePath(path);
 		ConvertFile(p);
-	}
+        GetNode<TextEdit>("../Output").Text = Logger.messages;
+    }
 
-	void ConvertFile(string path)
+    void ConvertFile(string path)
 	{
 		string ext = System.IO.Path.GetExtension(path);
 		GD.Print(ext);
@@ -25,17 +27,17 @@ public class ModelReader : FileDialog
 		{
 			case ".lev":
 				{
-                    GD.Print(path);
+					GD.Print(path);
 
-                        Scene scn = Scene.FromFile(path);
+						Scene scn = Scene.FromFile(path);
 
 
-                        scn.quads = scn.quads.OrderBy(o => o.id).ToList();
-                        string objfile = scn.Export("obj", Detail.Low, false, false);
-                        objfile = scn.Export("obj", Detail.Med, true, true);
-                        //LaunchMeshLab(objfile);
-                    
-                    break;
+						scn.quads = scn.quads.OrderBy(o => o.id).ToList();
+						string objfile = scn.Export("obj", Detail.Low, false, false);
+						objfile = scn.Export("obj", Detail.Med, true, true);
+						//LaunchMeshLab(objfile);
+					
+					break;
 				}
 			case ".ctr":
 				{

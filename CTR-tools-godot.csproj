@@ -51,14 +51,14 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="CTRFramework">
-      <HintPath>DLL\CTRFramework.dll</HintPath>
-    </Reference>
     <Reference Include="NAudio">
       <HintPath>DLL\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="CTRFramework">
+      <HintPath>..\CTR-tools\ctr-tools\CTRFramework\bin\x64\Release\CTRFramework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

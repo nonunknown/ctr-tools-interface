@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://imgs/flag.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Main.cs" type="Script" id=2]
@@ -12,74 +12,78 @@
 [ext_resource path="res://font/8-BIT WONDER.TTF" type="DynamicFontData" id=10]
 [ext_resource path="res://imgs/crash_eye_1.png" type="Texture" id=11]
 [ext_resource path="res://scripts/ModelReader.cs" type="Script" id=12]
+[ext_resource path="res://snd/select.wav" type="AudioStream" id=13]
+[ext_resource path="res://snd/cancel.wav" type="AudioStream" id=14]
+[ext_resource path="res://snd/change.wav" type="AudioStream" id=15]
+[ext_resource path="res://snd/move.wav" type="AudioStream" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 460, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 920, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 1380, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 1840, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 2300, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 2760, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 3220, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 3680, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=10]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 4140, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=11]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 4600, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 5060, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=13]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 5520, 610, 460 )
 
 [sub_resource type="AtlasTexture" id=14]
-flags = 1
+flags = 5
 atlas = ExtResource( 1 )
 region = Rect2( 0, 5980, 610, 460 )
 
@@ -102,6 +106,8 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color( 0.0392157, 0.87451, 0.835294, 0.392157 )
+shadow_color = Color( 0, 0, 0, 0.301961 )
+shadow_offset = Vector2( 20, 20 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 8
@@ -149,6 +155,9 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 0.0392157, 0.976471, 0.866667, 0.392157 )
+shadow_color = Color( 0, 0, 0, 0.227451 )
+shadow_size = 1
+shadow_offset = Vector2( 20, 20 )
 
 [sub_resource type="GDScript" id=20]
 script/source = "extends Control
@@ -182,14 +191,31 @@ __meta__ = {
 }
 npDescription = NodePath("Principal/TextureRect/Description")
 
+[node name="Sound" type="Node" parent="."]
+
+[node name="select" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource( 13 )
+
+[node name="back" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource( 14 )
+
+[node name="move" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource( 16 )
+
+[node name="change" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource( 15 )
+
+[node name="menu_music" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource( 15 )
+
 [node name="Background" type="AnimatedSprite" parent="."]
-visible = false
 position = Vector2( 214.924, 181.176 )
 scale = Vector2( 1.71281, 1.39646 )
 skew = 4.37114e-08
 frames = SubResource( 15 )
 animation = "New Anim"
-frame = 2
+frame = 1
+speed_scale = 0.7
 playing = true
 offset = Vector2( -6, 0 )
 __meta__ = {
@@ -225,8 +251,11 @@ custom_colors/font_color = Color( 0.980392, 0.423529, 0.0156863, 1 )
 text = ">"
 
 [node name="Principal" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.36035
+margin_right = -1.36035
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -318,6 +347,7 @@ __meta__ = {
 margin_right = 274.0
 margin_bottom = 49.0
 rect_scale = Vector2( 1, 1 )
+disabled = true
 text = "Big tool"
 
 [node name="bt_mpk" parent="Principal/Panel/VBoxContainer" instance=ExtResource( 3 )]
@@ -325,6 +355,7 @@ margin_top = 49.0
 margin_right = 274.0
 margin_bottom = 98.0
 rect_scale = Vector2( 1, 1 )
+disabled = true
 text = "Mpk tool"
 
 [node name="bt_models" parent="Principal/Panel/VBoxContainer" instance=ExtResource( 3 )]
@@ -339,6 +370,7 @@ margin_top = 147.0
 margin_right = 274.0
 margin_bottom = 196.0
 rect_scale = Vector2( 1, 1 )
+disabled = true
 text = "Language t."
 
 [node name="bt_howl" parent="Principal/Panel/VBoxContainer" instance=ExtResource( 3 )]
@@ -346,6 +378,7 @@ margin_top = 196.0
 margin_right = 274.0
 margin_bottom = 245.0
 rect_scale = Vector2( 1, 1 )
+disabled = true
 text = "Howl Ext."
 
 [node name="bt_cseq" parent="Principal/Panel/VBoxContainer" instance=ExtResource( 3 )]
@@ -353,6 +386,7 @@ margin_top = 245.0
 margin_right = 274.0
 margin_bottom = 294.0
 rect_scale = Vector2( 1, 1 )
+disabled = true
 text = "cseq / midi"
 
 [node name="bt_viewer" parent="Principal/Panel/VBoxContainer" instance=ExtResource( 3 )]
@@ -360,6 +394,7 @@ margin_top = 294.0
 margin_right = 274.0
 margin_bottom = 343.0
 rect_scale = Vector2( 1, 1 )
+disabled = true
 text = "Viewer"
 
 [node name="Big" type="Control" parent="."]
@@ -411,7 +446,6 @@ __meta__ = {
 }
 
 [node name="MReader" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = SubResource( 22 )
@@ -420,7 +454,6 @@ __meta__ = {
 }
 
 [node name="FileDialog" type="FileDialog" parent="MReader"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

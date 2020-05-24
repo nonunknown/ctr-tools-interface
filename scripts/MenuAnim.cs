@@ -18,6 +18,7 @@ public class MenuAnim : Node
 
 	public async void ChangeState(int newState)
 	{
+
 		int value = -740;
 		while(true) {
 			Vector2 pos = state.RectPosition;
