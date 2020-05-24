@@ -219,6 +219,9 @@ rcf/
 
 DLL/files/
 DLL/text/
+.import/
+.mono/
+*.import
 
 # Windows Store app package directories and files
 AppPackages/
